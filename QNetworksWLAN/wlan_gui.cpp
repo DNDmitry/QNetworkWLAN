@@ -6,6 +6,7 @@ WLAN_GUI::WLAN_GUI(QWidget *parent) :
     ui(new Ui::WLAN_GUI)
 {
     ui->setupUi(this);
+    setLayout(ui->verticalLayout);
 }
 
 WLAN_GUI::~WLAN_GUI()
