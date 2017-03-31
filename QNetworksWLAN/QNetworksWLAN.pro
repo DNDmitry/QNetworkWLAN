@@ -24,8 +24,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        wlan_gui.cpp
+        wlan_gui.cpp \
+    dataextractor.cpp \
+    datahandler.cpp
 
-HEADERS  += wlan_gui.h
+HEADERS  += wlan_gui.h \
+    dataextractor.h \
+    datahandler.h
 
 FORMS    += wlan_gui.ui
