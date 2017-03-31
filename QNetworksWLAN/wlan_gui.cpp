@@ -10,6 +10,7 @@ WLAN_GUI::WLAN_GUI(QWidget *parent) :
     this->m_handler = std::unique_ptr<DataHandler>(new DataHandler());//new DataHandler(this);
     this->m_model = std::unique_ptr<QStandardItemModel>(new QStandardItemModel(this));//new QStandardItemModel(this);
     filling_in_the_view();
+
 }
 
 void WLAN_GUI::filling_in_the_view()

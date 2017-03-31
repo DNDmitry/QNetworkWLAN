@@ -4,6 +4,8 @@
 #include <QWidget>
 #include "datahandler.h"
 
+#define UPDATE_INTERVAL 1000
+
 namespace Ui {
 class WLAN_GUI;
 }
