@@ -7,6 +7,15 @@ WLAN_GUI::WLAN_GUI(QWidget *parent) :
 {
     ui->setupUi(this);
     setLayout(ui->verticalLayout);
+    this->m_handler = new DataHandler();
+    this->m_model = new QStandardItemModel(this);
+    filling_in_the_view();
+}
+
+void WLAN_GUI::filling_in_the_view()
+{
+    this->m_handler->init(this->m_model);
+    ui->lvView->setModel(m_model);
 }
 
 WLAN_GUI::~WLAN_GUI()

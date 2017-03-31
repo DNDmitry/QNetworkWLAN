@@ -2,6 +2,8 @@
 #define WLAN_GUI_H
 
 #include <QWidget>
+#include "QStandardItemModel"
+#include "datahandler.h"
 
 namespace Ui {
 class WLAN_GUI;
@@ -17,6 +19,11 @@ public:
 
 private:
     Ui::WLAN_GUI *ui;
+    QStandardItemModel *m_model;
+    DataHandler *m_handler;
+
+    void filling_in_the_view();
+
 };
 
 #endif // WLAN_GUI_H

@@ -1,11 +1,22 @@
 #ifndef DATAHANDLER_H
 #define DATAHANDLER_H
-
+#include "dataextractor.h"
+#include "QStandardItemModel"
 
 class DataHandler
 {
 public:
-    DataHandler();
+    explicit DataHandler();
+    ~DataHandler();
+
+    void init(QStandardItemModel *model);
+
+private:
+    DataExtractor *m_extractor;
+    QList<QStandardItem*> *test_items;
+
+
+
 };
 
 #endif // DATAHANDLER_H
