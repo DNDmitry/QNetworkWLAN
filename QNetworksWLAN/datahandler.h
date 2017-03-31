@@ -9,10 +9,10 @@ public:
     explicit DataHandler();
     ~DataHandler();
 
-    void init(QStandardItemModel *model);
+    void init(std::unique_ptr<QStandardItemModel> &model);
 
 private:
-    DataExtractor *m_extractor;
+    std::unique_ptr<DataExtractor> m_extractor;
     QList<QStandardItem*> *test_items;
 
 
