@@ -15,7 +15,8 @@ QStringList DataExtractor::get_wlan_list()
     QStringList result;
     for(auto it : m_configurations_list)
     {
-        result.append(it.name());
+        if (it.bearerType() == QNetworkConfiguration::BearerWLAN)
+            result.append(it.name());
     }
     return result;
 }
