@@ -22,8 +22,10 @@ private:
     Ui::WLAN_GUI *ui;
     std::unique_ptr<QStandardItemModel> m_model;
     std::unique_ptr<DataHandler> m_handler;
+    std::unique_ptr<QTimer> m_timer;
 
     void filling_in_the_view();
+
 
 };
 

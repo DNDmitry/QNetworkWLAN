@@ -8,16 +8,13 @@
 #include <QObject>
 
 #define UPDATE_INTERVAL 1000
-class DataExtractor : public QObject
-{
-    Q_OBJECT
+class DataExtractor
+{    
 public:
-    DataExtractor(QObject *parent = 0);
+    DataExtractor();
     ~DataExtractor();
     QStringList get_wlan_list();
 
-private slots:
-    void activateAutoClick();
 
 private:
 
@@ -25,7 +22,6 @@ private:
     std::unique_ptr<QNetworkConfiguration> m_configuration;
     std::unique_ptr<QNetworkConfigurationManager> m_netmanager;
     QList<QNetworkConfiguration> m_configurations_list;
-    std::unique_ptr<QTimer> m_timer;
 
 
 };

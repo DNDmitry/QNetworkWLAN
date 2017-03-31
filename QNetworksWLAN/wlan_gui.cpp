@@ -11,6 +11,9 @@ WLAN_GUI::WLAN_GUI(QWidget *parent) :
     this->m_model = std::unique_ptr<QStandardItemModel>(new QStandardItemModel(this));//new QStandardItemModel(this);
     filling_in_the_view();
 
+    m_timer = std::unique_ptr<QTimer>(new QTimer(this));
+    connect(m_timer.get(), &QTimer::timeout, this, &WLAN_GUI::filling_in_the_view);
+    m_timer->start(UPDATE_INTERVAL);
 }
 
 void WLAN_GUI::filling_in_the_view()

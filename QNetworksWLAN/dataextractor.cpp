@@ -1,11 +1,9 @@
 #include "dataextractor.h"
 
 
-DataExtractor::DataExtractor(QObject *parent) : QObject(parent)
+DataExtractor::DataExtractor()
 {
-    m_timer = std::unique_ptr<QTimer>(new QTimer(this));
-    connect(m_timer.get(), &QTimer::timeout, this, &DataExtractor::activateAutoClick);
-    m_timer->start(UPDATE_INTERVAL);
+
 }
 DataExtractor::~DataExtractor()
 {
@@ -22,9 +20,4 @@ QStringList DataExtractor::get_wlan_list()
             result.append(std::move(it.name()));
     }
     return result;
-}
-
-void DataExtractor::activateAutoClick()
-{
-    get_wlan_list();
 }
