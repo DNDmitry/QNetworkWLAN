@@ -23,6 +23,10 @@ void DataHandler::init(std::unique_ptr<QStandardItemModel> &model)
         test_items->clear();
     }
     ///////////////////////
-
-
 }
+
+void DataHandler::get_connect(const QString &name)
+{
+    m_extractor.get()->connect_to_network(name);
+}
+

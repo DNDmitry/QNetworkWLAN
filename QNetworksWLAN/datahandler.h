@@ -10,12 +10,11 @@ public:
     ~DataHandler();
 
     void init(std::unique_ptr<QStandardItemModel> &model);
+    void get_connect(const QString &name);
 
 private:
     std::unique_ptr<DataExtractor> m_extractor;
     QList<QStandardItem*> *test_items;
-
-
 
 };
 

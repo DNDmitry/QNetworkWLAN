@@ -4,7 +4,7 @@
 #include <QWidget>
 #include "datahandler.h"
 
-#define UPDATE_INTERVAL 1000
+#define UPDATE_INTERVAL 60*1000
 
 namespace Ui {
 class WLAN_GUI;
@@ -25,7 +25,8 @@ private:
     std::unique_ptr<QTimer> m_timer;
 
     void filling_in_the_view();
-
+    void check_the_selection();
+    void make_connection(const QModelIndex &network_name);
 
 };
 

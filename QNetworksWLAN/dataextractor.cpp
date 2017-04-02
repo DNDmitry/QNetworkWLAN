@@ -1,7 +1,8 @@
 #include "dataextractor.h"
 
 
-DataExtractor::DataExtractor()
+DataExtractor::DataExtractor(QObject *parent) :
+    QObject(parent)
 {
 
 }
@@ -20,4 +21,21 @@ QStringList DataExtractor::get_wlan_list()
             result.append(std::move(it.name()));
     }
     return result;
+}
+
+void DataExtractor::connect_to_network(const QString &name)
+{
+    for(auto it : m_configurations_list)
+    {
+        if(it.name() == name)
+        {
+            auto session = new QNetworkSession(it, this);
+            if(session->state() == QNetworkSession::Connected)
+                session->stop();
+            else
+                session->open();
+        }
+    }
+
+
 }
