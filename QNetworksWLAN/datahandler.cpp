@@ -6,21 +6,22 @@ DataHandler::DataHandler()
 }
 DataHandler::~DataHandler()
 {
-    delete test_items;
+    delete items;
 }
 
 void DataHandler::init(std::unique_ptr<QStandardItemModel> &model)
 {
    // model->clear();
     /////////////////////
-    test_items = new QList<QStandardItem*>();
+    items = new QList<QStandardItem*>();
     m_extractor = std::unique_ptr<DataExtractor>(new DataExtractor());
-    QStringList test_data = m_extractor.get()->get_wlan_list();
-    for(auto it : test_data)
+    QJsonArray data = m_extractor.get()->get_wlan_list();
+    for(auto it : data)
     {
-        test_items->append(new QStandardItem(it));
-        model->appendRow(*test_items);
-        test_items->clear();
+        QJsonObject obj = it.toObject();
+        items->append(new QStandardItem(obj["name"].toString()));
+        model->appendRow(*items);
+        items->clear();
     }
     ///////////////////////
 }

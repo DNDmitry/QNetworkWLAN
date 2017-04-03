@@ -8,6 +8,8 @@
 #include <QtNetwork/QNetworkAccessManager>
 #include <QTimer>
 #include <QObject>
+#include <QJsonObject>
+#include <QJsonArray>
 
 class DataExtractor : public QObject
 {    
@@ -15,17 +17,14 @@ class DataExtractor : public QObject
 public:
     DataExtractor(QObject *parent = 0);
     ~DataExtractor();
-    QStringList get_wlan_list();
+    QJsonArray get_wlan_list();
     void connect_to_network(const QString &name);
     void _connectToWifiNetwork(const QString& bssid, QString password);
 
 private:
-
-    // to_json
-    //std::unique_ptr<QNetworkConfiguration> m_configuration;
-    std::unique_ptr<QNetworkConfigurationManager> m_netmanager;
-    std::unique_ptr<QNetworkAccessManager> m_acessmanager;
+    std::unique_ptr<QNetworkConfigurationManager> m_netmanager;    
     QList<QNetworkConfiguration> m_configurations_list;
+    QJsonArray json;
 
 
 };
