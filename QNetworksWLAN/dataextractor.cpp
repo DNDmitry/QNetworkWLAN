@@ -40,18 +40,8 @@ void DataExtractor::connect_to_network(const QString &name)
             auto session = new QNetworkSession(it, this);
             if(session->state() == QNetworkSession::Connected)
                 session->stop();
-            else
-            {
-                session->open();
-                if(!session->errorString().isEmpty())
-                {
-                    QMessageBox msgBox;
-                    msgBox.setText(session->errorString());
-                    msgBox.exec();
-                }
-            }
-
-
+            else           
+                session->open();               
 
         }
     }
