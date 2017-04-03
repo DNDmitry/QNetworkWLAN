@@ -1,4 +1,5 @@
 #include "dataextractor.h"
+#include <QMessageBox>
 
 DataExtractor::DataExtractor(QObject *parent) :
     QObject(parent)
@@ -22,7 +23,7 @@ QJsonArray DataExtractor::get_wlan_list()
             {
                 {"name", it.name()},
                 {"connected", it.state() == QNetworkConfiguration::Active ? true : false},
-                {"secured", true}
+                {"secured", true} // need to check
             };
             json.push_front(std::move(single_wlan));
         }
@@ -40,7 +41,18 @@ void DataExtractor::connect_to_network(const QString &name)
             if(session->state() == QNetworkSession::Connected)
                 session->stop();
             else
+            {
                 session->open();
+                if(!session->errorString().isEmpty())
+                {
+                    QMessageBox msgBox;
+                    msgBox.setText(session->errorString());
+                    msgBox.exec();
+                }
+            }
+
+
+
         }
     }
 }
