@@ -15,7 +15,7 @@ public:
 
 private:
     std::unique_ptr<DataExtractor> m_extractor;
-    QList<QStandardItem*> *items;
+    QList<QStandardItem*> *items;   
 
 };
 

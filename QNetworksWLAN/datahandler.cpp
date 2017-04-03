@@ -17,7 +17,10 @@ void DataHandler::init(std::unique_ptr<QStandardItemModel> &model)
     std::for_each(data.begin(), data.end(), [&](QJsonValueRef it)
     {
         QJsonObject obj = it.toObject();
-        items->append(new QStandardItem(obj["name"].toString()));
+        if(obj["connected"].toBool() == true)
+            items->append(new QStandardItem(QIcon(":/new/prefix1/wifi.png"), obj["name"].toString()));
+        else
+            items->append(new QStandardItem(obj["name"].toString()));
         model.get()->appendRow(*items);
         items->clear();
     });

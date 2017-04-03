@@ -37,3 +37,6 @@ HEADERS  += wlan_gui.h \
 
 
 FORMS    += wlan_gui.ui
+
+RESOURCES += \
+    icon.qrc

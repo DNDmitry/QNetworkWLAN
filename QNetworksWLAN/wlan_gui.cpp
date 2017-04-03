@@ -7,12 +7,14 @@ WLAN_GUI::WLAN_GUI(QWidget *parent) :
     ui(new Ui::WLAN_GUI)
 {
     ui->setupUi(this);
+    ui->lvView->setModelColumn(2);
     setLayout(ui->glLayout);
     this->m_handler = std::unique_ptr<DataHandler>(new DataHandler(this));
     this->m_model = std::unique_ptr<QStandardItemModel>(new QStandardItemModel(this));
     filling_in_the_view();
 
     connect(ui->lvView, &QListView::doubleClicked, this, &WLAN_GUI::make_connection);
+    connect(ui->lvView, &QListView::doubleClicked, this, &WLAN_GUI::filling_in_the_view);
 
     m_timer = std::unique_ptr<QTimer>(new QTimer(this));
     connect(m_timer.get(), &QTimer::timeout, this, &WLAN_GUI::filling_in_the_view);    
