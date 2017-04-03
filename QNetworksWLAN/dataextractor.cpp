@@ -1,6 +1,5 @@
 #include "dataextractor.h"
 
-
 DataExtractor::DataExtractor(QObject *parent) :
     QObject(parent)
 {
@@ -36,6 +35,4 @@ void DataExtractor::connect_to_network(const QString &name)
                 session->open();
         }
     }
-
-
 }
