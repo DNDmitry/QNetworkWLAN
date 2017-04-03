@@ -1,6 +1,6 @@
 #include "datahandler.h"
 
-DataHandler::DataHandler()
+DataHandler::DataHandler(QObject *parent) : QObject(parent)
 {
 
 }
@@ -11,19 +11,16 @@ DataHandler::~DataHandler()
 
 void DataHandler::init(std::unique_ptr<QStandardItemModel> &model)
 {
-   // model->clear();
-    /////////////////////
     items = new QList<QStandardItem*>();
     m_extractor = std::unique_ptr<DataExtractor>(new DataExtractor());
     QJsonArray data = m_extractor.get()->get_wlan_list();
-    for(auto it : data)
+    std::for_each(data.begin(), data.end(), [&](QJsonValueRef it)
     {
         QJsonObject obj = it.toObject();
         items->append(new QStandardItem(obj["name"].toString()));
-        model->appendRow(*items);
+        model.get()->appendRow(*items);
         items->clear();
-    }
-    ///////////////////////
+    });
 }
 
 void DataHandler::get_connect(const QString &name)

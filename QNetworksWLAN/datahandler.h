@@ -3,10 +3,11 @@
 #include "dataextractor.h"
 #include "QStandardItemModel"
 
-class DataHandler
+class DataHandler : public QObject
 {
+    Q_OBJECT
 public:
-    explicit DataHandler();
+    explicit DataHandler(QObject *parent = 0);
     ~DataHandler();
 
     void init(std::unique_ptr<QStandardItemModel> &model);

@@ -1,5 +1,5 @@
 #include "dataextractor.h"
-#include <QMessageBox>
+
 
 DataExtractor::DataExtractor(QObject *parent) :
     QObject(parent)
@@ -39,9 +39,16 @@ void DataExtractor::connect_to_network(const QString &name)
         {
             auto session = new QNetworkSession(it, this);
             if(session->state() == QNetworkSession::Connected)
+            {
                 session->stop();
-            else           
-                session->open();               
+                session->deleteLater();
+            }
+            else
+            {
+                session->open();
+                session->waitForOpened(1000);
+                session->deleteLater();
+            }
 
         }
     }

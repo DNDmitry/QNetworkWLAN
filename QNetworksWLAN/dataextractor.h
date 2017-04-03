@@ -15,7 +15,7 @@ class DataExtractor : public QObject
 {    
     Q_OBJECT
 public:
-    DataExtractor(QObject *parent = 0);
+    explicit DataExtractor(QObject *parent = 0);
     ~DataExtractor();
     QJsonArray get_wlan_list();
     void connect_to_network(const QString &name);
