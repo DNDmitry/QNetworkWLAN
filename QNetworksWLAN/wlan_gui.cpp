@@ -8,7 +8,6 @@ WLAN_GUI::WLAN_GUI(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowIcon(QIcon(":/new/prefix1/wifi.png"));
-    ui->lvView->setModelColumn(2);
     setLayout(ui->glLayout);
     this->m_handler = std::unique_ptr<DataHandler>(new DataHandler(this));
     this->m_model = std::unique_ptr<QStandardItemModel>(new QStandardItemModel(this));
