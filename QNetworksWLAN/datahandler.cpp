@@ -13,8 +13,8 @@ void DataHandler::init(std::unique_ptr<QStandardItemModel> &model)
 {
     items = new QList<QStandardItem*>();
     m_extractor = std::unique_ptr<DataExtractor>(new DataExtractor());
-    QJsonArray *data = m_extractor.get()->get_wlan_list();
-    std::for_each(data->begin(), data->end(), [&](QJsonValueRef it)
+    QJsonArray data = m_extractor.get()->get_wlan_list();
+    std::for_each(data.begin(), data.end(), [&](QJsonValueRef it)
     {
         QJsonObject obj = it.toObject();
         if(obj["connected"].toBool() == true)

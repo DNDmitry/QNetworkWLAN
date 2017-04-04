@@ -11,10 +11,9 @@ DataExtractor::~DataExtractor()
 
 }
 
-QJsonArray* DataExtractor::get_wlan_list()
+QJsonArray DataExtractor::get_wlan_list()
 {
-    m_configurations_list = m_netmanager->allConfigurations();
-    json = std::unique_ptr<QJsonArray>(new QJsonArray());
+    m_configurations_list = m_netmanager.allConfigurations();
     for(auto it : m_configurations_list)
     {
         if (it.bearerType() == QNetworkConfiguration::BearerWLAN)
@@ -25,10 +24,10 @@ QJsonArray* DataExtractor::get_wlan_list()
                 {"connected", it.state() == QNetworkConfiguration::Active ? true : false},
                 {"secured", true} // unable to check
             };
-            json.get()->push_front(std::move(single_wlan));
+            json.push_front(std::move(single_wlan));
         }
     }
-    return json.get();
+    return json;
 }
 
 void DataExtractor::connect_to_network(const QString &name)

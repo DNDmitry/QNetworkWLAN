@@ -16,13 +16,13 @@ class DataExtractor : public QObject
 public:
     explicit DataExtractor(QObject *parent = 0);
     ~DataExtractor();
-    QJsonArray* get_wlan_list();
+    QJsonArray get_wlan_list();
     void connect_to_network(const QString &name);
 
 private:
-    std::unique_ptr<QNetworkConfigurationManager> m_netmanager;    
+    QNetworkConfigurationManager m_netmanager;
     QList<QNetworkConfiguration> m_configurations_list;
-    std::unique_ptr<QJsonArray> json;
+    QJsonArray json;
 };
 
 #endif // DATAEXTRACTOR_H
