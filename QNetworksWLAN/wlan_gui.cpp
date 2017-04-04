@@ -1,6 +1,5 @@
 #include "wlan_gui.h"
 #include "ui_wlan_gui.h"
-#include <qdebug.h>
 
 WLAN_GUI::WLAN_GUI(QWidget *parent) :
     QWidget(parent),

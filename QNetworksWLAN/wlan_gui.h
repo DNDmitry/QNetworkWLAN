@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "datahandler.h"
+#include <QTimer>
 
 #define UPDATE_INTERVAL 3000
 
